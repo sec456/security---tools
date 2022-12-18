@@ -46,11 +46,16 @@ nmap -sV --script=banner www.silicon.ac.in
  IP ADDRESS OF THE MACHINE EXAMPLE COMMAND IS
 UNDERNEATH . LOOK FOR MACJHINE OPEN WITH FTP PORT
 nmap -p 20,21 192.168.73.0/24
+nmap -sU -p 161 ip
+nmap -sV -O --osscan-guess -p 20,21 ip/24h
 
 
 
 
 wpscan
+
+wpscan --url website --enumerate u
+wpscan --url website -U users.txt -P /passwords.txt
 
 wpscan (the target url address) I e --url “http://192.168.73.171” --enumerate u
 wpscan (the target url address) I e --url “http://192.168.73.171” --enumerate u
