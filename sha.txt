@@ -53,11 +53,22 @@ nmap -p 20,21 192.168.73.0/24
 wpscan
 
 wpscan (the target url address) I e --url “http://192.168.73.171” --enumerate u
+wpscan (the target url address) I e --url “http://192.168.73.171” --enumerate u
+ 
+wpscan --url example.com -e u --passwords /path/to/password_file.txt
+
+wpscan --url http://172.16.0.27:8080/CEH  --passwords /home/attacker/Desktop/common.txt
+--usernames james
+seu123
+
+/home/attacker/Desktop/common.txt
+
 
 
 
 john
 
+john /usr/share/responder/logs/ filename
 john --format=md5 file.txt
 
 hydra -L user.txt -P pass.txt (the target ip address) i.e. 192.168.73.162 ftp (point to remember the
@@ -67,8 +78,21 @@ user.txt pass.txt files will be given on the machine already)
 
 dir------>ls
 
+hydra -L user.txt -P pass.txt (the target ip address) i.e. 192.168.73.162 ftp
 
-get ftp -flag.txt (this command will save the folder into our kali root folder)
+
+get ftp -flag.txt (this command will save the folder into our kali root folderAdam@smith)
+
+dvwa-zZZSecret123
+
+
+veracrypt
+
+documents---->file
+open veracrypt
+seelect file---->vcrypted file
+mount----->give password
+
 
 Sql map
 
