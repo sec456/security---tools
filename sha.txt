@@ -42,6 +42,11 @@ blah' or 1=1 --
 sqlmap -u "http://www.moviescope.com/viewprofile.aspx?id=1" -cookie="JSESSIONID=ROMd8ZB5LZP8RivByN4IdA" -dbs
 Then in answer sheet write the port no of both the machine who shared the secret message ---->covert tcp pcapng
 
+27=Adminstator=chai123
+
+snoow-450 989 878 899
+
+backdoor@secret.txt= 280 9888 9900
 
 
 nmap
